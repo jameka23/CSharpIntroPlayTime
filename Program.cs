@@ -18,12 +18,11 @@ namespace CSharpIntroPlayTime
             {
                 GroceryList();
             }
-            else  // change this to only call GuessingGame() when the user enters option "B"
+            else if(response != "B" || response != "b")  // change this to only call GuessingGame() when the user enters option "B"
             {
                 GuessingGame();
             }
-
-            if(response != "A" || response != "B"){
+            else{
                 Console.WriteLine("Please Enter a valid option!");
             }
             // If the user didn't input an "A" or "B" print a message 
@@ -46,6 +45,7 @@ namespace CSharpIntroPlayTime
                 // Main(null);
                 Console.WriteLine("Enter some groceries. (Enter a blank line when finished)");
                 input = Console.ReadLine();
+                
             }
 
             Console.WriteLine();
@@ -55,6 +55,7 @@ namespace CSharpIntroPlayTime
                 // Write the grocery to the console
                 Console.WriteLine(grocery);
             }
+            Main(null);
         }
 
         static void GuessingGame()
@@ -63,7 +64,7 @@ namespace CSharpIntroPlayTime
             //  This is the number the user is trying to guess
             int answer = new Random().Next(1, 21);
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Console.Write("Guess a number between 1 and 20: ");
                 int guess = int.Parse(Console.ReadLine());
@@ -86,7 +87,7 @@ namespace CSharpIntroPlayTime
 
             }
 
-            Console.WriteLine("Better luck next time...");
+            Console.WriteLine($"Better luck next time...the answer is {answer}");
         }
     }
 }
