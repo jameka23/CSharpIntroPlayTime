@@ -23,6 +23,9 @@ namespace CSharpIntroPlayTime
                 GuessingGame();
             }
 
+            if(response != "A" || response != "B"){
+                Console.WriteLine("Please Enter a valid option!");
+            }
             // If the user didn't input an "A" or "B" print a message 
             //  telling them they selected an invalid option
         }
@@ -30,7 +33,7 @@ namespace CSharpIntroPlayTime
         static void GroceryList()
         {
             string input;
-            List<string> groceries = new List<string>();
+            List<string> groceries = new List<string>(); // this is an array in C#
 
             Console.WriteLine("Enter some groceries. (Enter a blank line when finished)");
 
@@ -40,6 +43,9 @@ namespace CSharpIntroPlayTime
                 groceries.Add(input);
 
                 // Ask for the input again
+                // Main(null);
+                Console.WriteLine("Enter some groceries. (Enter a blank line when finished)");
+                input = Console.ReadLine();
             }
 
             Console.WriteLine();
@@ -47,6 +53,7 @@ namespace CSharpIntroPlayTime
             foreach (string grocery in groceries)
             {
                 // Write the grocery to the console
+                Console.WriteLine(grocery);
             }
         }
 
@@ -68,8 +75,15 @@ namespace CSharpIntroPlayTime
                 //  If so, print "Too Low!" to the console
 
                 // When the user guesses correctly, tell them and return from the method
-                Console.WriteLine("You got it!");
-                return;
+                if(guess > answer){
+                    Console.WriteLine("Too High!");
+                }else if(guess < answer){
+                    Console.WriteLine("Too Low!");
+                }else if(guess == answer){
+                    Console.WriteLine("You got it!");
+                    return;
+                }
+
             }
 
             Console.WriteLine("Better luck next time...");
